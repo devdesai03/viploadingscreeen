@@ -51,7 +51,7 @@ const songs = [
 
 ## 📁 Project Structure
 ```
-luxury-rp-loading-screen/
+vip-rp-loading-screen/
 ├── assets/
 │   ├── css/              # Stylesheets
 │   │   └── style.css
