@@ -1,0 +1,602 @@
+@import "https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap";
+
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family:'Monaco', monospace;
+    background: radial-gradient(circle, #800080 40%, #4B0082 100%);
+    color: #FFD700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    cursor: none; /* Hide the default cursor */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, rgba(255, 20, 147, 0.4), rgba(255, 215, 0, 0.4)) !important;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+/* Custom Cursor */
+#custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    pointer-events: none; /* Ensure the cursor doesn't block clicks */
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: none; /* Hidden initially */
+}
+
+/* Background Video */
+.background-video video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.7) contrast(1.1);
+}
+
+.background-video::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+/* Particle Effect */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Content Container */
+.content-container {
+    text-align: center;
+    z-index: 1;
+    color: #fff;
+    padding: 20px;
+}
+
+/* Logo */
+.logo-container .logo {
+    width: 425px;
+    margin: 0 auto 20px;
+    position: relative;
+    top: 50px;
+    animation: fade-in 2s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Welcome Message */
+.welcome-message {
+    position: relative;
+    top: 140px;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.welcome-message h5 {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    line-height: 1.5;
+    animation: fade-in-up 1.5s ease-in-out;
+}
+
+.welcome-message span {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+/* Music Player */
+.music-player {
+    position: relative;
+    top: 150px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    background: rgba(128, 0, 128, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    width: 800px;
+    max-width: 1000px;
+    height: 80px; 
+    text-align: left;
+    color: #FFD700;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.8);
+    border: 1px solid #FFD700;
+    animation: fade-in-up 2s ease-in-out;
+    gap: 15px;
+}
+
+/* Song Row */
+.song-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Push elements to fill the row */
+    gap: 150px;
+}
+
+/* Song Info */
+
+.song-info {
+    display: flex;
+    align-items: center; /* Center song cover and details vertically */
+    gap: 12px; /* Add space between song cover and details */
+    flex-grow: 1; /* Allow song info to take up more space */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) to overflowing text */
+}
+
+.song-cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    border: 3px solid #FFD700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.song-cover:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #FFD700;
+}
+
+.song-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #FF1493;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (…) for overflowing text */
+}
+
+.song-artist {
+    font-size: 0.7rem;
+    margin: 0;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (…) for overflowing text */
+}
+
+/* Controls Row */
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 185px;
+    flex-shrink: 0; /* Prevent resizing */
+    justify-content: space-between; /* Keep playback controls and volume slider spaced */
+}
+/* Playback Controls */
+.play-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between control buttons */
+}
+
+.play-controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.play-controls button:hover {
+    background-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
+}
+
+/* Volume Controls */
+.volume-controls {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0; /* Prevent resizing */
+}
+
+.volume-slider {
+    width: 120px; /* Set the width of the volume slider */
+    appearance: none;
+    background: #FF1493;
+    height: 5px;
+    border-radius: 5px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FFD700;
+    cursor: pointer;
+}
+
+/* Volume Controls */
+.volume-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the volume icon and slider */
+}
+
+.volume-icon {
+    width: 20px; /* Adjust the size of the volume icon */
+    height: 20px;
+    display: inline-block;
+    object-fit: contain; /* Ensure the image scales proportionally */
+}
+
+/* Progress Bar Section */
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align time and progress bar on the edges */
+    gap: 10px;
+    flex-shrink: 0; /* Prevent resizing */
+    width: 100%; /* Ensure consistent size */
+}
+
+.progress-bar {
+    flex-grow: 1;
+    appearance: none;
+    background: #FF1493;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+    flex-shrink: 0;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FFD700;
+    cursor: pointer;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.social-links a {
+    position: relative;
+    display: inline-block;
+}
+
+.social-links a img {
+    width: 50px;
+    margin: 0 15px;
+    transition: transform 0.3s, filter 0.3s;
+    filter: brightness(0.8);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.social-links a img:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: brightness(1);
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.8);
+}
+
+/* Tooltip for Social Links */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: #800080;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Game Icon */
+.controller-icon {
+    position: absolute;
+    top: 500px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.game-icon {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.game-icon:hover {
+    transform: scale(1.3);
+    filter: brightness(2);
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+/* Tic-Tac-Toe Game Styles */
+#tictactoe-container {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    background: linear-gradient(135deg, rgba(128, 0, 128, 0.9), rgba(255, 20, 147, 0.9));
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.9);
+    text-align: center;
+    width: 360px;
+    border: 3px solid #FFD700;
+}
+
+/* Title */
+#tictactoe-container h2 {
+    font-family: 'Saira', sans-serif;
+    font-size: 1.8rem;
+    color: #FFD700;
+    text-shadow: 0 0 10px #FF1493, 0 0 20px #FFD700;
+}
+
+/* Grid for Tic-Tac-Toe */
+.tictactoe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    grid-template-rows: repeat(3, 110px);
+    gap: 8px;
+    margin: 15px auto;
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.4), rgba(255, 20, 147, 0.4));
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+/* Game Cells */
+.game-cell {
+    width: 110px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    background: linear-gradient(45deg, #800080, #4B0082);
+    border: 3px solid #FFD700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    border-radius: 10px;
+}
+
+.game-cell:hover {
+    background: linear-gradient(45deg, #FF1493, #FF4500);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #FFD700;
+}
+
+/* Winning Highlight */
+.game-cell.winner {
+    background: linear-gradient(45deg, #FFD700, #FF4500);
+    box-shadow: 0 0 25px #FFD700;
+    transform: scale(1.1);
+}
+
+/* Status Message */
+.status-message {
+    font-size: 1.4rem;
+    color: #FFD700;
+    font-weight: bold;
+    text-shadow: 0 0 8px #FF1493;
+}
+
+/* Reset Button */
+#reset-game {
+    margin-top: 12px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #FF1493, #FFD700);
+    color: #4B0082;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+#reset-game:hover {
+    background: linear-gradient(45deg, #FFD700, #FF4500);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #FFD700;
+}
+
+/* Difficulty Selection Container */
+#difficulty-select {
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(128, 0, 128, 0.9), rgba(255, 20, 147, 0.9));
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    border: 2px solid #FFD700;
+    animation: fade-in 1s ease-in-out;
+}
+
+/* Difficulty Text */
+#difficulty-select p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 0 0 10px #FF1493, 0 0 15px #FFD700;
+    margin-bottom: 10px;
+    font-family: 'Saira', sans-serif;
+}
+
+/* Difficulty Buttons */
+.difficulty-btn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 18px;
+    margin: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    font-family: 'Rubik', sans-serif;
+    color: #FFF;
+}
+
+/* Individual Button Colors */
+.difficulty-btn[data-difficulty="easy"] {
+    background: linear-gradient(45deg, #32CD32, #228B22);
+    box-shadow: 0 0 12px #32CD32;
+}
+
+.difficulty-btn[data-difficulty="medium"] {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    box-shadow: 0 0 12px #FFD700;
+}
+
+.difficulty-btn[data-difficulty="hard"] {
+    background: linear-gradient(45deg, #FF4500, #DC143C);
+    box-shadow: 0 0 12px #FF4500;
+}
+
+/* Hover Effects */
+.difficulty-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+    filter: brightness(1.2);
+}
+
+/* Click Effects */
+.difficulty-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 15px rgba(255, 165, 0, 1);
+}
+
+
+/* UI Toggle Button */
+.ui-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.eye-icon {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.eye-icon.hidden {
+    transform: rotate(180deg);
+    opacity: 0.5;
+}
+
+.eye-icon:hover {
+    transform: scale(1.3);
+    filter: brightness(1.5);
+}
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .logo-container .logo {
+        width: 200px;
+    }
+
+    .welcome-message h5 {
+        font-size: 1rem;
+    }
+
+    .music-player {
+        width: 90%;
+        top: 130px;
+    }
+
+    .tictactoe-grid {
+        grid-template-columns: repeat(3, 85px);
+        grid-template-rows: repeat(3, 85px);
+    }
+
+    .game-cell {
+        width: 85px;
+        height: 85px;
+        font-size: 2rem;
+    }
+
+    .controller-icon {
+        bottom: 15px;
+        left: 15px;
+    }
+}
+
+

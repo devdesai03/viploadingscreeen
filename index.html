@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIPLoadingScreen</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="assets/scripts/main.js" defer></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div class="background-video">
+        <video autoplay playsinline id="bg-video">
+            Your browser does not support the video tag.
+        </video>        
+    </div>
+
+    <div class="content-container">
+        <div class="logo-container">
+            <img src="assets/media/logo.png" alt="Luxury RP Logo" class="logo">   <!-- change this to your own logo -->
+        </div>
+        <div class="welcome-message">
+            <h5>Welcome to <span>VIP RP!</span> Get ready to experience immersive roleplay adventures.</h5>
+            <h5>Make sure to join our Discord server to stay updated with the latest news and updates.</h5>
+        </div>
+        <div class="music-player">
+            <!-- Row containing song info, playback, and volume controls -->
+            <div class="song-row">
+                <div class="song-info">
+                    <img src="" alt="Song Cover" class="song-cover"> <!-- Empty src, will be set by JS -->
+                    <div class="details">
+                        <p class="song-title"></p> <!-- Empty, will be set by JS -->
+                        <p class="song-artist"></p> <!-- Empty, will be set by JS -->
+                    </div>
+                </div>
+                <div class="controls-row">
+                    <!-- Playback Controls -->
+                    <div class="play-controls">
+                        <button id="prev-song" aria-label="Previous song">⏮</button>
+                        <button id="play-pause" aria-label="Play/Pause">❚❚</button>
+                        <button id="next-song" aria-label="Next song">⏭</button>
+                    </div>
+                    <!-- Volume Controls -->
+                    <div class="volume-controls">
+                        <img src="assets/media/icons/volume.png" alt="Volume Icon" class="volume-icon">
+                        <input type="range" id="volume-slider" min="0" max="100" value="50" step="5" class="volume-slider">
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Progress Bar Section -->
+            <div class="progress-container">
+                <span id="current-time">0:00</span>
+                <input type="range" id="progress-bar" min="0" max="100" value="0" class="progress-bar">
+                <span id="duration">3:22</span>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://discord.gg/viproleplay" target="_blank">     <!-- change this to your Discord link -->
+                <img src="assets/media/icons/discord.png" alt="Discord">
+            </a>
+            <a href="https://viprp.tebex.io/" target="_blank">          <!-- change this to your Tebex link -->
+                <img src="assets/media/icons/tebex.png" alt="Donations"> 
+            </a>
+        </div>
+    </div>
+
+    <!-- UI Toggle Button -->
+    <div class="ui-toggle">
+        <img src="assets/media/icons/eye.png" alt="Toggle UI" class="eye-icon">
+    </div>
+
+    <!-- Game Toggle Button -->
+    <div class="controller-icon">
+        <img src="assets/media/icons/game.png" alt="Controller Icon" class="game-icon" id="game-toggle">
+    </div>
+
+    <!-- Tic-Tac-Toe Game Container -->
+    <div id="tictactoe-container">
+        <h2 style="color: #FFD700;">Tic-Tac-Toe</h2>
+        <div class="tictactoe-grid">
+            <div class="game-cell" data-row="0" data-col="0"></div>
+            <div class="game-cell" data-row="0" data-col="1"></div>
+            <div class="game-cell" data-row="0" data-col="2"></div>
+            <div class="game-cell" data-row="1" data-col="0"></div>
+            <div class="game-cell" data-row="1" data-col="1"></div>
+            <div class="game-cell" data-row="1" data-col="2"></div>
+            <div class="game-cell" data-row="2" data-col="0"></div>
+            <div class="game-cell" data-row="2" data-col="1"></div>
+            <div class="game-cell" data-row="2" data-col="2"></div>
+        </div>
+        <button id="reset-game">Reset Game</button>
+    </div>
+
+    <img id="custom-cursor" src="assets/media/icons/cursor.png" alt="Custom Cursor">
+    
+</body>
+</html>
